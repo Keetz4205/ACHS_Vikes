@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Season Information</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-image: url('IMG_3313.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #001f3f 0%, #000000 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        nav { background: #000000; padding: 1rem; text-align: center; }
+        nav a { color: white; margin: 0 1rem; text-decoration: none; }
+        nav a:hover { color: #001f3f; }
+        main { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; }
+        .schedule-card {
+            background: rgba(0, 0, 0, 0.65);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        .schedule-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .table-wrap { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: rgba(255,255,255,0.06); }
+        th, td { padding: 1rem 1rem; text-align: left; }
+        th { font-weight: 700; letter-spacing: 0.02em; }
+        tbody tr { border-top: 1px solid rgba(255,255,255,0.08); }
+        tbody tr:hover { background: rgba(255,255,255,0.06); }
+        .status {
+            display: inline-block;
+            padding: 0.35rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .status.upcoming { background: rgba(56, 142, 60, 0.2); color: #8be39a; border: 1px solid rgba(56, 142, 60, 0.45); }
+        .status.passed { background: rgba(211, 47, 47, 0.2); color: #f5a3a3; border: 1px solid rgba(211, 47, 47, 0.45); }
+        .empty { padding: 1.25rem 1.5rem; color: #eaeaea; }
+        footer { background: #000000; color: white; text-align: center; padding: 1rem; margin-top: 3rem; }
+        .sr { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .note { font-size: 0.95rem; color: #eaeaea; opacity: 0.9; padding: 0 1.5rem 1rem; }
+        .muted { color: #d9d9d9; opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Season Information</h1>
+        <p>Competition dates, locations, and live status</p>
+    </header>
+    <nav>
+        <a href="ACHS_Vikes.html">Back to Home</a>
+    </nav>
+    <main>
+        <section class="schedule-card" aria-labelledby="schedule-title">
+            <div class="schedule-header" id="schedule-title">Schedule</div>
+            <p class="note">Status updates are based on the current date; items automatically switch from Upcoming to Passed at midnight of the listed date.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Event</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-body">
+                        <tr id="empty-row"><td colspan="4" class="empty">Competition schedule coming soon.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section style="margin-top: 1rem;" class="muted">
+            <!--
+            To add competitions (once the details are read from the provided image),
+            edit the competitions array in the script below. Example format:
+
+            competitions.push({
+                date: '2025-01-18',              // YYYY-MM-DD (used for status calculation)
+                displayDate: 'Jan 18, 2025',     // How you want it shown in the table
+                location: 'Williamstown Middle School'
+            });
+            -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Atlantic City High School FTC</p>
+    </footer>
+
+    <script>
+        // Add competition entries here once extracted from the given image.
+        // Use YYYY-MM-DD for the 'date' field to ensure correct status calculation.
+        const competitions = [
+            { date: '2025-09-21', displayDate: 'Sunday, September 21st, 2025', event: 'Start up', location: 'Williamstown Middle School, 561 Clayton Road, Williamstown, NJ 08094' },
+            { date: '2025-10-05', displayDate: 'Sunday, October 5th, 2025', event: 'Practice Day', location: 'Highland Park High School, 102 N. 5th Avenue, Highland Park, NJ 08904' },
+            { date: '2025-11-16', displayDate: 'Sunday, November 16th, 2025', event: 'Meet #1', location: 'Williamstown Middle School, 561 Clayton Road, Williamstown, NJ 08094' },
+            { date: '2025-11-30', displayDate: 'Sunday, November 30th, 2025', event: 'Meet #2', location: 'Princeton Day School, 650 Great Road, Princeton, NJ 08540' },
+            { date: '2026-01-11', displayDate: 'Sunday, January 11, 2026', event: 'Meet #3', location: 'PAL of Atlantic County and EHT, 2542 Ridge Avenue, Egg Harbor Township, NJ 08232' },
+            { date: '2026-02-21', displayDate: 'Saturday, February 21, 2026', event: 'Deep South Conference', location: 'Northern Burlington County Middle School, 160 Mansfield Road East, Columbus, NJ 08022' },
+            { date: '2026-03-15', displayDate: 'Sunday, March 15, 2026', event: 'State Championship', location: 'Hillsborough High School, 466 Raider Blvd., Hillsborough Township, NJ 08844' },
+            // For ranges, status flips after the end date. Use the start date for sorting and compute end-of-range for status.
+            { date: '2026-04-29', endDate: '2026-05-02', displayDate: 'April 29, 2026 - May 2, 2026', event: 'World Championship', location: 'Houston, TX' }
+        ];
+
+        // Example (remove comment after replacing with real data):
+        // competitions.push({ date: '2025-01-18', displayDate: 'Jan 18, 2025', location: 'Williamstown Middle School' });
+
+        function isPassed(dateStr) {
+            // Compare against local current date at 23:59 of the event day
+            const event = new Date(dateStr + 'T23:59:59');
+            const now = new Date();
+            return now > event;
+        }
+
+        function renderSchedule() {
+            const tbody = document.getElementById('schedule-body');
+            const emptyRow = document.getElementById('empty-row');
+
+            // Sort by actual date ascending
+            competitions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (competitions.length === 0) {
+                if (emptyRow) emptyRow.style.display = '';
+                return;
+            }
+            if (emptyRow) emptyRow.remove();
+
+            for (const item of competitions) {
+                const tr = document.createElement('tr');
+
+                const tdDate = document.createElement('td');
+                tdDate.textContent = item.displayDate || item.date;
+
+                const tdEvent = document.createElement('td');
+                tdEvent.textContent = item.event || '';
+
+                const tdLocation = document.createElement('td');
+                tdLocation.textContent = item.location;
+
+                const tdStatus = document.createElement('td');
+                const status = document.createElement('span');
+                const basisDate = item.endDate ? item.endDate : item.date;
+                const passed = isPassed(basisDate);
+                status.className = 'status ' + (passed ? 'passed' : 'upcoming');
+                status.textContent = passed ? 'Passed' : 'Upcoming';
+                tdStatus.appendChild(status);
+
+                tr.appendChild(tdDate);
+                tr.appendChild(tdEvent);
+                tr.appendChild(tdLocation);
+                tr.appendChild(tdStatus);
+                tbody.appendChild(tr);
+            }
+        }
+
+        renderSchedule();
+
+        // Optional: Update statuses at midnight without reload
+        (function scheduleMidnightRefresh(){
+            const now = new Date();
+            const next = new Date();
+            next.setHours(24, 0, 5, 0); // a few seconds after midnight
+            const delay = next - now;
+            setTimeout(() => { location.reload(); }, delay);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competition Performances</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-image: url('IMG_3313.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #001f3f 0%, #000000 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        nav {
+            background: #000000;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #001f3f;
+        }
+        main {
+            max-width: 100%;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .photo-item {
+            background: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+        .photo-placeholder {
+            width: 100%;
+            height: 600px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+        footer {
+            background: #000000;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #ccc;
+        }
+        .photo-item img,
+        .photo-item .photo-placeholder {
+            cursor: pointer;
+        }
+        .photo-item img:hover,
+        .photo-item .photo-placeholder:hover {
+            opacity: 0.8;
+        }
+        .photo-header {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .photo-header.loss {
+            color: #d32f2f;
+        }
+        .photo-header.win {
+            color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>COMPETITIONS AT WILLIAMSTOWN MIDDLE SCHOOL</h1>
+        <p>Highlighting Our Victories and Losses</p>
+    </header>
+    <nav>
+        <a href="ACHS_Vikes.html">Back to Home</a>
+    </nav>
+    <main>
+        <section>
+            <div class="photo-gallery">
+                <div>
+                    <div class="photo-header loss">LOSS</div>
+                    <div class="photo-item">
+                        <img src="Competition_1.jpg" alt="Competition photo">
+                    </div>
+                </div>
+                <div>
+                    <div class="photo-header loss">LOSS</div>
+                    <div class="photo-item">
+                        <img src="Competition_2.jpg" alt="Competition photo">
+                    </div>
+                </div>
+                <div>
+                    <div class="photo-header win">WIN</div>
+                    <div class="photo-item">
+                        <img src="Competition_3.jpg" alt="Competition photo">
+                    </div>
+                </div>
+                <div>
+                    <div class="photo-header win">WIN</div>
+                    <div class="photo-item">
+                        <img src="Competition_4.jpg" alt="Competition photo">
+                    </div>
+                </div>
+                <div>
+                    <div class="photo-header loss">LOSS</div>
+                    <div class="photo-item">
+                        <img src="Competition_5.jpg" alt="Competition photo">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Atlantic City High School FTC</p>
+    </footer>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="">
+    </div>
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close');
+        const photoItems = document.querySelectorAll('.photo-item img, .photo-item .photo-placeholder');
+
+        photoItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if (this.tagName === 'IMG') {
+                    modalImg.src = this.src;
+                }
+                modal.style.display = 'block';
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

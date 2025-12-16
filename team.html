@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team Roles</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #ffffff;
+      background-image: url('IMG_3313.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, #001f3f 0%, #000000 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
+    nav { background: #000000; padding: 1rem; text-align: center; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; }
+    nav a:hover { color: #001f3f; }
+    main { max-width: 1100px; margin: 2rem auto; padding: 0 2rem; }
+    .roles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: rgba(0,0,0,0.65);
+      border-radius: 10px;
+      padding: 1.25rem 1.25rem 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .card ul { margin-left: 1.25rem; }
+    .card li { margin: 0.35rem 0; }
+    footer { background: #000000; color: white; text-align: center; padding: 1rem; margin-top: 3rem; }
+    .muted { color: #eaeaea; opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Team Roles</h1>
+    <p class="muted">Discover the people and responsibilities that power our robotics team</p>
+  </header>
+  <nav>
+    <a href="ACHS_Vikes.html">Back to Home</a>
+  </nav>
+  <main>
+    <section class="roles">
+      <article class="card">
+        <h2>Coders</h2>
+        <ul>
+          <li>Autonomous and teleop programming</li>
+          <li>Robot code structure and documentation</li>
+          <li>Version control and code reviews</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Driver</h2>
+        <ul>
+          <li>Robot operation during matches</li>
+          <li>Drive practice and strategy execution</li>
+          <li>Robot checks before each match</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Builders</h2>
+        <ul>
+          <li>Chassis and mechanism design</li>
+          <li>Assembly, wiring, and maintenance</li>
+          <li>CAD and prototyping</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Outreach</h2>
+        <ul>
+          <li>Sponsorship and fundraising</li>
+          <li>Social media and communications</li>
+          <li>STEM advocacy</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Atlantic City High School FTC</p>
+  </footer>
+</body>
+</html>
